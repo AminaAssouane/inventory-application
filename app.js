@@ -1,6 +1,10 @@
 const express = require("express");
 const app = express();
 
+const inventoryRouter = require("./routes/inventoryRouter");
+
+app.use("/", inventoryRouter);
+
 const PORT = process.env.port || 3000;
 app.listen(PORT, (error) => {
   if (error) {

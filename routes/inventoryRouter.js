@@ -7,21 +7,13 @@ const inventoryController = require("../controllers/inventoryController");
 inventoryRouter.get("/", inventoryController.homepage);
 
 // Categories
-inventoryRouter.get("/categories", (req, res) => {
-  res.send("Categories");
-});
+inventoryRouter.get("/categories", inventoryController.getCategories);
 
-inventoryRouter.get("/categories/:id", (req, res) => {
-  res.send("Category");
-});
+inventoryRouter.get("/categories/:id", inventoryController.getCategory);
 
 // Items
-inventoryRouter.get("/items", (req, res) => {
-  res.send("Items");
-});
+inventoryRouter.get("/items", inventoryController.getItems);
 
-inventoryRouter.get("/items/:id", (req, res) => {
-  res.send("Item");
-});
+inventoryRouter.get("/items/:id", inventoryController.getItemById);
 
 module.exports = inventoryRouter;

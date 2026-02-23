@@ -1,11 +1,10 @@
 // routes/inventoryRouter.js
 const { Router } = require("express");
 const inventoryRouter = Router();
+const inventoryController = require("../controllers/inventoryController");
 
 // Homepage
-inventoryRouter.get("/", (req, res) => {
-  res.send("Homepage");
-});
+inventoryRouter.get("/", inventoryController.homepage);
 
 // Categories
 inventoryRouter.get("/categories", (req, res) => {

@@ -8,14 +8,16 @@
   <body>
     <div>All items :</div>
     <ul>
-      <% items.forEach((item) => {%>
+      <% items.forEach((item) => { %>
       <li>
-        <div>Name : <%=item.jewel%></div>
-        <div>Category id : <%=item.category_id%></div>
-        <div>Quantity : <%=item.quantity%></div>
-        <div>Price : <%=item.price%></div>
+        <div>Name : <%= item.jewel %></div>
+        <div>Category id : <%= item.category_id %></div>
+        <div>Quantity : <%= item.quantity %></div>
+        <div>Price : <%= item.price %></div>
       </li>
-      <%})%>
+      <% }) %>
     </ul>
+    <a href="/"><button>Create new item</button></a>
+    <a href="/"><button>Back</button></a>
   </body>
 </html>

@@ -3,17 +3,19 @@ const { Router } = require("express");
 const inventoryRouter = Router();
 const inventoryController = require("../controllers/inventoryController");
 
-// Homepage
+// READING
 inventoryRouter.get("/", inventoryController.homepage);
-
-// Categories
 inventoryRouter.get("/categories", inventoryController.getAllCategories);
-
 inventoryRouter.get("/categories/:id", inventoryController.getCategory);
-
-// Items
 inventoryRouter.get("/items", inventoryController.getAllItems);
-
 inventoryRouter.get("/items/:id", inventoryController.getItemById);
+
+// CREATING
+inventoryRouter.get("/createCategory", inventoryController.createCategoryGet);
+inventoryRouter.post("/createCategory", inventoryController.createCategoryPost);
+
+// UPDATING
+
+// DELETING
 
 module.exports = inventoryRouter;

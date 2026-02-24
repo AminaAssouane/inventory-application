@@ -1,5 +1,7 @@
 const db = require("../db/queries");
 
+// READING
+
 function homepage(req, res) {
   res.render("home");
 }
@@ -54,10 +56,23 @@ async function getItemById(req, res) {
   }
 }
 
+// CREATING
+async function createCategoryGet(req, res) {
+  res.render("createCategory");
+}
+
+async function createCategoryPost(req, res) {
+  const category = req.body.category;
+  await db.createCategory(category);
+  res.redirect("/categories");
+}
+
 module.exports = {
   homepage,
   getAllCategories,
   getCategory,
   getAllItems,
   getItemById,
+  createCategoryGet,
+  createCategoryPost,
 };

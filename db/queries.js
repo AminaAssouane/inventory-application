@@ -1,5 +1,7 @@
 const pool = require("./pool");
 
+// READING
+
 async function getAllCategories() {
   const { rows } = await pool.query("SELECT category FROM categories");
   return rows;
@@ -23,4 +25,16 @@ async function getItemById(id) {
   return rows[0] || null;
 }
 
-module.exports = { getAllItems, getAllCategories, getCategory, getItemById };
+// CREATING
+
+async function createCategory(name) {
+  await pool.query("INSERT INTO categories (category) VALUES ($1)", [name]);
+}
+
+module.exports = {
+  getAllItems,
+  getAllCategories,
+  getCategory,
+  getItemById,
+  createCategory,
+};

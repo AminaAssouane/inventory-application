@@ -6,13 +6,13 @@ const createCategoriesTable = `CREATE TABLE categories (id INTEGER PRIMARY KEY G
   category VARCHAR ( 255 ))`;
 
 const createItemsTable = `CREATE TABLE jewels (id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY, 
-name VARCHAR (255), category_id INTEGER, quantity INTEGER, price INTEGER )`;
+jewel VARCHAR (255), category_id INTEGER REFERENCES categories(id), quantity INTEGER, price INTEGER )`;
 
 // Populating tables
 const createCategoriesData = `INSERT INTO categories (category) VALUES 
 ('Gemstone'), ('Necklace'), ('Bracelet'), ('Ring')`;
 
-const createItemsData = `INSERT INTO jewels (name, category_id, quantity, price) VALUES
+const createItemsData = `INSERT INTO jewels (jewel, category_id, quantity, price) VALUES
 ('Ruby', 1, 4, 255), ('Flowery pendant', 2, 11, 23), ('Friendship bracelet', 3, 55, 7), ('Diamond ring', 4, 2, 1432)`;
 
 async function main() {
@@ -22,6 +22,9 @@ async function main() {
   try {
     await client.connect();
     console.log("Connected to database.");
+    await client.query("DROP TABLE IF EXISTS jewels");
+    await client.query("DROP TABLE IF EXISTS categories");
+    console.log("Tables reset.");
     await client.query(createCategoriesTable);
     await client.query(createItemsTable);
     console.log("Tables created.");

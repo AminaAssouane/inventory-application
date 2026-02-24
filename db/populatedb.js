@@ -6,7 +6,8 @@ const createCategoriesTable = `CREATE TABLE categories (id INTEGER PRIMARY KEY G
   category VARCHAR ( 255 ))`;
 
 const createItemsTable = `CREATE TABLE jewels (id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY, 
-jewel VARCHAR (255), category_id INTEGER REFERENCES categories(id), quantity INTEGER, price INTEGER )`;
+jewel VARCHAR (255), category_id INTEGER, quantity INTEGER, price INTEGER, FOREIGN KEY (category_id)
+    REFERENCES categories(id) ON DELETE CASCADE )`;
 
 // Populating tables
 const createCategoriesData = `INSERT INTO categories (category) VALUES 

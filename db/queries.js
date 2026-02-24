@@ -5,6 +5,11 @@ async function getAllNames() {
   return rows;
 }
 
+async function getAllCategories() {
+  const { rows } = await pool.query("SELECT category FROM categories");
+  return rows;
+}
+
 async function getCategory(id) {
   const { rows } = await pool.query(
     "SELECT category FROM categories WHERE id = $1",
@@ -13,4 +18,4 @@ async function getCategory(id) {
   return rows[0] || null;
 }
 
-module.exports = { getAllNames, getCategory };
+module.exports = { getAllNames, getAllCategories, getCategory };

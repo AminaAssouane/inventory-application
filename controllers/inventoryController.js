@@ -4,8 +4,14 @@ function homepage(req, res) {
   res.render("home");
 }
 
-function getCategories(req, res) {
-  res.render("categories");
+async function getAllCategories(req, res) {
+  try {
+    const categories = await db.getAllCategories();
+    res.render("categories", { categories: categories });
+  } catch (error) {
+    console.error("Error fetching categories:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 }
 
 async function getCategory(req, res) {
@@ -35,7 +41,7 @@ function getItemById(req, res) {
 
 module.exports = {
   homepage,
-  getCategories,
+  getAllCategories,
   getCategory,
   getItems,
   getItemById,

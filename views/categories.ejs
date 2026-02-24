@@ -6,6 +6,15 @@
     <title>Document</title>
   </head>
   <body>
-    <div>Dang the categories</div>
+    <div>
+      The categories :
+      <ul>
+        <% categories.forEach((category) => { %>
+          <li>
+            <%= category.category %>
+          </li>
+        <%})%>   
+      </ul>
+    </div>
   </body>
 </html>

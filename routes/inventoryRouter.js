@@ -7,7 +7,7 @@ const inventoryController = require("../controllers/inventoryController");
 inventoryRouter.get("/", inventoryController.homepage);
 
 // Categories
-inventoryRouter.get("/categories", inventoryController.getCategories);
+inventoryRouter.get("/categories", inventoryController.getAllCategories);
 
 inventoryRouter.get("/categories/:id", inventoryController.getCategory);
 

@@ -33,5 +33,6 @@ inventoryRouter.post(
 
 // DELETING
 inventoryRouter.delete("/categories/:id", inventoryController.deleteCategory);
+inventoryRouter.delete("/items/:id", inventoryController.deleteItem);
 
 module.exports = inventoryRouter;

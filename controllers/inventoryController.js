@@ -101,6 +101,16 @@ function updateItemGet(req, res) {
   res.render("updateItem", { id });
 }
 
+async function updateItemPost(req, res) {
+  const id = req.params.id;
+  const { jewel, category_id, quantity, price } = req.body;
+  const categoryId = parseInt(category_id, 10);
+  const qty = parseInt(quantity, 10);
+  const prc = parseInt(price, 10);
+  await db.updateItem(jewel, categoryId, qty, prc, id);
+  res.redirect("/items");
+}
+
 module.exports = {
   homepage,
   getAllCategories,
@@ -114,4 +124,5 @@ module.exports = {
   updateCategoryGet,
   updateCategoryPost,
   updateItemGet,
+  updateItemPost,
 };

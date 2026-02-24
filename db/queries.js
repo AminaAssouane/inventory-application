@@ -44,6 +44,13 @@ async function updateCategory(category, id) {
   ]);
 }
 
+async function updateItem(jewel, category_id, quantity, price, id) {
+  await pool.query(
+    "UPDATE jewels SET jewel = $1, category_id = $2, quantity = $3, price = $4 WHERE id = $5",
+    [jewel, category_id, quantity, price, id],
+  );
+}
+
 module.exports = {
   getAllItems,
   getAllCategories,
@@ -52,4 +59,5 @@ module.exports = {
   createCategory,
   createItem,
   updateCategory,
+  updateItem,
 };

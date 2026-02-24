@@ -24,7 +24,7 @@ async function getCategory(req, res) {
     console.log("Category: ", category.category);
     res.render("category", { category });
   } catch (error) {
-    console.error("Error fetching category:", error);
+    console.error("Error fetching category: ", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 }
@@ -39,9 +39,19 @@ async function getAllItems(req, res) {
   }
 }
 
-function getItemById(req, res) {
+async function getItemById(req, res) {
   const id = req.params.id;
-  res.render("item", { id: id });
+  try {
+    const item = await db.getItemById(id);
+    if (!item) {
+      return res.status(500).send("Item not found.");
+    }
+    console.log("Item : ", item);
+    res.render("item", { item });
+  } catch (error) {
+    console.error("Error fetching item: ", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 }
 
 module.exports = {

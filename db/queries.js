@@ -18,4 +18,9 @@ async function getAllItems() {
   return rows;
 }
 
-module.exports = { getAllItems, getAllCategories, getCategory };
+async function getItemById(id) {
+  const { rows } = await pool.query("SELECT * FROM jewels WHERE id = $1", [id]);
+  return rows[0] || null;
+}
+
+module.exports = { getAllItems, getAllCategories, getCategory, getItemById };

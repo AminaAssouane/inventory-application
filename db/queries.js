@@ -1,10 +1,5 @@
 const pool = require("./pool");
 
-async function getAllNames() {
-  const { rows } = await pool.query("SELECT name FROM jewels");
-  return rows;
-}
-
 async function getAllCategories() {
   const { rows } = await pool.query("SELECT category FROM categories");
   return rows;
@@ -18,4 +13,9 @@ async function getCategory(id) {
   return rows[0] || null;
 }
 
-module.exports = { getAllNames, getAllCategories, getCategory };
+async function getAllItems() {
+  const { rows } = await pool.query("SELECT * FROM jewels");
+  return rows;
+}
+
+module.exports = { getAllItems, getAllCategories, getCategory };

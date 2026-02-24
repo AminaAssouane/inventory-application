@@ -6,6 +6,16 @@
     <title>Document</title>
   </head>
   <body>
-    <div>All items</div>
+    <div>All items :</div>
+    <ul>
+      <% items.forEach((item) => {%>
+      <li>
+        <div>Name : <%=item.jewel%></div>
+        <div>Category id : <%=item.category_id%></div>
+        <div>Quantity : <%=item.quantity%></div>
+        <div>Price : <%=item.price%></div>
+      </li>
+      <%})%>
+    </ul>
   </body>
 </html>

@@ -29,9 +29,14 @@ async function getCategory(req, res) {
   }
 }
 
-async function getItems(req, res) {
-  const items = await db.getAllNames();
-  res.send("items : " + items.map((item) => item.name).join(" & "));
+async function getAllItems(req, res) {
+  try {
+    const items = await db.getAllItems();
+    res.render("items", { items });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Server error");
+  }
 }
 
 function getItemById(req, res) {
@@ -43,6 +48,6 @@ module.exports = {
   homepage,
   getAllCategories,
   getCategory,
-  getItems,
+  getAllItems,
   getItemById,
 };

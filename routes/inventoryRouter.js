@@ -12,7 +12,7 @@ inventoryRouter.get("/categories", inventoryController.getAllCategories);
 inventoryRouter.get("/categories/:id", inventoryController.getCategory);
 
 // Items
-inventoryRouter.get("/items", inventoryController.getItems);
+inventoryRouter.get("/items", inventoryController.getAllItems);
 
 inventoryRouter.get("/items/:id", inventoryController.getItemById);
 

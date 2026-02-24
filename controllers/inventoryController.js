@@ -96,6 +96,11 @@ async function updateCategoryPost(req, res) {
   }
 }
 
+function updateItemGet(req, res) {
+  const id = req.params.id;
+  res.render("updateItem", { id });
+}
+
 module.exports = {
   homepage,
   getAllCategories,
@@ -108,4 +113,5 @@ module.exports = {
   createItemPost,
   updateCategoryGet,
   updateCategoryPost,
+  updateItemGet,
 };

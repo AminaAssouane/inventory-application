@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="/items/updateItem/<%= id %>" method="POST">
+      <fieldset>
+        <legend>Update item :</legend>
+        <label for="jewel">New jewelry name : </label>
+        <input type="text" name="jewel" id="jewel" />
+        <label for="category_id">New category id : </label>
+        <input type="text" name="category_id" id="category_id" />
+        <label for="quantity">New quantity : </label>
+        <input type="text" name="quantity" id="quantity" />
+        <label for="price">New price : </label>
+        <input type="text" name="price" id="price" />
+        <button type="submit">Edit</button>
+      </fieldset>
+    </form>
+    <a href="/items"><button>Return</button></a>
+  </body>
+</html>

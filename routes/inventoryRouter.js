@@ -25,7 +25,7 @@ inventoryRouter.post(
   "/categories/updateCategory/:id",
   inventoryController.updateCategoryPost,
 );
-
+inventoryRouter.get("/items/updateItem/:id", inventoryController.updateItemGet);
 // DELETING
 
 module.exports = inventoryRouter;

@@ -8,7 +8,7 @@ async function getAllCategories() {
 
 async function getCategory(id) {
   const { rows } = await pool.query(
-    "SELECT category FROM categories WHERE id = $1",
+    "SELECT id, category FROM categories WHERE id = $1",
     [id],
   );
   return rows[0] || null;
@@ -37,10 +37,10 @@ async function createItem(jewel, category_id, quantity, price) {
 }
 
 // UPDATING
-async function updateCategory(category) {
+async function updateCategory(category, id) {
   await pool.query("UPDATE categories SET category = $1 WHERE id = $2", [
-    category.category,
-    category.id,
+    category,
+    id,
   ]);
 }
 

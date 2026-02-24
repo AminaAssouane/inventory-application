@@ -81,12 +81,16 @@ async function createItemPost(req, res) {
 
 // UPDATING
 function updateCategoryGet(req, res) {
-  res.render("updateCategory");
+  const id = req.params.id;
+  res.render("updateCategory", { id });
 }
 
 async function updateCategoryPost(req, res) {
+  const id = req.params.id;
   const category = req.body.category;
   try {
+    await db.updateCategory(category, id);
+    res.redirect("/categories");
   } catch (error) {
     console.error(error);
   }

@@ -31,10 +31,18 @@ async function createCategory(name) {
   await pool.query("INSERT INTO categories (category) VALUES ($1)", [name]);
 }
 
+async function createItem(jewel, category_id, quantity, price) {
+  await pool.query(
+    "INSERT INTO jewels (jewel, category_id, quantity, price) VALUES ($1, $2, $3, $4)",
+    [jewel, category_id, quantity, price],
+  );
+}
+
 module.exports = {
   getAllItems,
   getAllCategories,
   getCategory,
   getItemById,
   createCategory,
+  createItem,
 };

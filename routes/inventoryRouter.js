@@ -13,6 +13,8 @@ inventoryRouter.get("/items/:id", inventoryController.getItemById);
 // CREATING
 inventoryRouter.get("/createCategory", inventoryController.createCategoryGet);
 inventoryRouter.post("/createCategory", inventoryController.createCategoryPost);
+inventoryRouter.get("/createItem", inventoryController.createItemGet);
+inventoryRouter.post("/createItem", inventoryController.createItemPost);
 
 // UPDATING
 

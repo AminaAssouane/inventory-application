@@ -57,7 +57,7 @@ async function getItemById(req, res) {
 }
 
 // CREATING
-async function createCategoryGet(req, res) {
+function createCategoryGet(req, res) {
   res.render("createCategory");
 }
 
@@ -65,6 +65,19 @@ async function createCategoryPost(req, res) {
   const category = req.body.category;
   await db.createCategory(category);
   res.redirect("/categories");
+}
+
+function createItemGet(req, res) {
+  res.render("createItem");
+}
+
+async function createItemPost(req, res) {
+  const { jewel, category_id, quantity, price } = req.body;
+  const categoryId = parseInt(category_id, 10);
+  const qty = parseInt(quantity, 10);
+  const prc = parseInt(price, 10);
+  await db.createItem(jewel, categoryId, qty, prc);
+  res.redirect("/items");
 }
 
 module.exports = {
@@ -75,4 +88,6 @@ module.exports = {
   getItemById,
   createCategoryGet,
   createCategoryPost,
+  createItemGet,
+  createItemPost,
 };

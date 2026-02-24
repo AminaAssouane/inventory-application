@@ -32,5 +32,6 @@ inventoryRouter.post(
 );
 
 // DELETING
+inventoryRouter.post("/categories/:id", inventoryController.deleteCategory);
 
 module.exports = inventoryRouter;

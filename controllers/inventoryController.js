@@ -111,6 +111,13 @@ async function updateItemPost(req, res) {
   res.redirect("/items");
 }
 
+// DELETING
+async function deleteCategory(req, res) {
+  const id = req.params.id;
+  await db.deleteCategory(id);
+  res.redirect("/categories");
+}
+
 module.exports = {
   homepage,
   getAllCategories,
@@ -125,4 +132,5 @@ module.exports = {
   updateCategoryPost,
   updateItemGet,
   updateItemPost,
+  deleteCategory,
 };

@@ -51,6 +51,11 @@ async function updateItem(jewel, category_id, quantity, price, id) {
   );
 }
 
+// DELETING
+async function deleteCategory(id) {
+  await pool.query("DELETE FROM categories WHERE id = $1", [id]);
+}
+
 module.exports = {
   getAllItems,
   getAllCategories,
@@ -60,4 +65,5 @@ module.exports = {
   createItem,
   updateCategory,
   updateItem,
+  deleteCategory,
 };

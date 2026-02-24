@@ -1,7 +1,6 @@
 const db = require("../db/queries");
 
 // READING
-
 function homepage(req, res) {
   res.render("home");
 }
@@ -80,6 +79,19 @@ async function createItemPost(req, res) {
   res.redirect("/items");
 }
 
+// UPDATING
+function updateCategoryGet(req, res) {
+  res.render("updateCategory");
+}
+
+async function updateCategoryPost(req, res) {
+  const category = req.body.category;
+  try {
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 module.exports = {
   homepage,
   getAllCategories,
@@ -90,4 +102,6 @@ module.exports = {
   createCategoryPost,
   createItemGet,
   createItemPost,
+  updateCategoryGet,
+  updateCategoryPost,
 };

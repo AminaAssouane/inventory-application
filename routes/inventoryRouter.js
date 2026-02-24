@@ -17,6 +17,7 @@ inventoryRouter.get("/createItem", inventoryController.createItemGet);
 inventoryRouter.post("/createItem", inventoryController.createItemPost);
 
 // UPDATING
+inventoryRouter.get("/updateCategory", inventoryController.updateCategoryGet);
 
 // DELETING
 

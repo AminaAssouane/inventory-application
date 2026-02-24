@@ -1,9 +1,8 @@
 const pool = require("./pool");
 
 // READING
-
 async function getAllCategories() {
-  const { rows } = await pool.query("SELECT category FROM categories");
+  const { rows } = await pool.query("SELECT * FROM categories");
   return rows;
 }
 
@@ -26,7 +25,6 @@ async function getItemById(id) {
 }
 
 // CREATING
-
 async function createCategory(name) {
   await pool.query("INSERT INTO categories (category) VALUES ($1)", [name]);
 }
@@ -38,6 +36,14 @@ async function createItem(jewel, category_id, quantity, price) {
   );
 }
 
+// UPDATING
+async function updateCategory(category) {
+  await pool.query("UPDATE categories SET category = $1 WHERE id = $2", [
+    category.category,
+    category.id,
+  ]);
+}
+
 module.exports = {
   getAllItems,
   getAllCategories,
@@ -45,4 +51,5 @@ module.exports = {
   getItemById,
   createCategory,
   createItem,
+  updateCategory,
 };

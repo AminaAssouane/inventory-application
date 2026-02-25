@@ -11,13 +11,18 @@
         <legend>Update item :</legend>
         <label for="jewel">New jewelry name : </label>
         <input type="text" name="jewel" id="jewel" value="<%= item.jewel %>" />
-        <label for="category_id">New category id : </label>
-        <input
-          type="text"
-          name="category_id"
-          id="category_id"
-          value="<%= item.category_id %>"
-        />
+        <label for="category_id">New category : </label>
+        <select name="category_id" id="category_id">
+          <% categories.forEach(category => { %>
+          <option
+              value="<%= category.id %>"
+              <%= category.id === item.category_id ? "selected" : "" %>
+          >
+          <%= category.category %>
+          </option>
+          <% }) %>
+
+</select>
         <label for="quantity">New quantity : </label>
         <input
           type="text"

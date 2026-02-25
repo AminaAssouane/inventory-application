@@ -66,8 +66,9 @@ async function createCategoryPost(req, res) {
   res.redirect("/categories");
 }
 
-function createItemGet(req, res) {
-  res.render("createItem");
+async function createItemGet(req, res) {
+  const categories = await db.getAllCategories();
+  res.render("createItem", { categories });
 }
 
 async function createItemPost(req, res) {
@@ -99,7 +100,8 @@ async function updateCategoryPost(req, res) {
 async function updateItemGet(req, res) {
   const id = req.params.id;
   const item = await db.getItemById(id);
-  res.render("updateItem", { item });
+  const categories = await db.getAllCategories();
+  res.render("updateItem", { item, categories });
 }
 
 async function updateItemPost(req, res) {

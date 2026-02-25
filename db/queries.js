@@ -2,20 +2,20 @@ const pool = require("./pool");
 
 // READING
 async function getAllCategories() {
-  const { rows } = await pool.query("SELECT * FROM categories");
+  const { rows } = await pool.query("SELECT * FROM categories ORDER BY id ASC");
   return rows;
 }
 
 async function getCategory(id) {
   const { rows } = await pool.query(
-    "SELECT id, category FROM categories WHERE id = $1",
+    "SELECT id, category FROM categories WHERE id = $1 ",
     [id],
   );
   return rows[0] || null;
 }
 
 async function getAllItems() {
-  const { rows } = await pool.query("SELECT * FROM jewels");
+  const { rows } = await pool.query("SELECT * FROM jewels ORDER BY id ASC");
   return rows;
 }
 

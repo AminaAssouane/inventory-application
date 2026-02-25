@@ -6,17 +6,27 @@
     <title>Document</title>
   </head>
   <body>
-    <form action="/items/updateItem/<%= id %>" method="POST">
+    <form action="/items/updateItem/<%= item.id %>" method="POST">
       <fieldset>
         <legend>Update item :</legend>
         <label for="jewel">New jewelry name : </label>
-        <input type="text" name="jewel" id="jewel" />
+        <input type="text" name="jewel" id="jewel" value="<%= item.jewel %>" />
         <label for="category_id">New category id : </label>
-        <input type="text" name="category_id" id="category_id" />
+        <input
+          type="text"
+          name="category_id"
+          id="category_id"
+          value="<%= item.category_id %>"
+        />
         <label for="quantity">New quantity : </label>
-        <input type="text" name="quantity" id="quantity" />
+        <input
+          type="text"
+          name="quantity"
+          id="quantity"
+          value="<%= item.quantity %>"
+        />
         <label for="price">New price : </label>
-        <input type="text" name="price" id="price" />
+        <input type="text" name="price" id="price" value="<%= item.price %>" />
         <button type="submit">Edit</button>
       </fieldset>
     </form>

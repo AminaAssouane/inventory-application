@@ -96,18 +96,21 @@ async function updateCategoryPost(req, res) {
   }
 }
 
-function updateItemGet(req, res) {
+async function updateItemGet(req, res) {
   const id = req.params.id;
-  res.render("updateItem", { id });
+  const item = await db.getItemById(id);
+  res.render("updateItem", { item });
 }
 
 async function updateItemPost(req, res) {
   const id = req.params.id;
-  const { jewel, category_id, quantity, price } = req.body;
-  const categoryId = parseInt(category_id, 10);
-  const qty = parseInt(quantity, 10);
-  const prc = parseInt(price, 10);
-  await db.updateItem(jewel, categoryId, qty, prc, id);
+  const current = await db.getItemById(id); // get current values
+
+  const jewel = req.body.jewel || current.jewel;
+  const category_id = req.body.category_id || current.category_id;
+  const quantity = req.body.quantity || current.quantity;
+  const price = req.body.price || current.price;
+  await db.updateItem(jewel, category_id, quantity, price, id);
   res.redirect("/items");
 }
 
